@@ -10,19 +10,19 @@
     >
       <q-carousel-slide
         :name="1"
-        img-src="https://cdn.quasar.dev/img/mountains.jpg"
+        img-src="../image/lw1.jpg"
       />
       <q-carousel-slide
         :name="2"
-        img-src="https://cdn.quasar.dev/img/parallax1.jpg"
+        img-src="../image/lw2.jpg"
       />
       <q-carousel-slide
         :name="3"
-        img-src="https://cdn.quasar.dev/img/parallax2.jpg"
+        img-src="../image/lw3.jpg"
       />
       <q-carousel-slide
         :name="4"
-        img-src="https://cdn.quasar.dev/img/quasar.jpg"
+        img-src="../image/lw4.jpg"
       />
 
       <template v-slot:control>

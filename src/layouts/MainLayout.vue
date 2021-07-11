@@ -11,7 +11,7 @@
           @click="toggleLeftDrawer"
         />
         <q-toolbar-title> Calesvol's Website </q-toolbar-title>
-        <div>建设中</div>
+        <div @click="toast">建设中</div>
       </q-toolbar>
     </q-header>
 
@@ -20,7 +20,7 @@
         <q-item-label header class="text-grey-8">
           Essential Links
         </q-item-label>
-        <q-item clickable v-ripple>
+        <q-item clickable v-ripple @click="tips">
           <q-item-section side>
             <q-avatar size="48px">
               <img src="../image/avatar.jpg" />
@@ -47,22 +47,21 @@
 
 <script>
 import EssentialLink from "components/EssentialLink.vue";
-
+import { useQuasar } from "quasar";
 const linksList = [
   {
     title: "个人主页",
     caption: "CalesvolChen",
     icon: "home",
-    path: "/hello"
+    // link: "爱你呀宝",
   },
   {
-    title: 'Github',
-    caption: 'github.com/CalesvolChen',
-    icon: 'code',
-    link: 'https://github.com/CalesvolChen'
-  }
+    title: "Github",
+    caption: "github.com/CalesvolChen",
+    icon: "code",
+    link: "https://github.com/CalesvolChen",
+  },
 ];
-
 import { defineComponent, ref } from "vue";
 
 export default defineComponent({
@@ -74,12 +73,29 @@ export default defineComponent({
 
   setup() {
     const leftDrawerOpen = ref(false);
+    const $q = useQuasar();
 
     return {
       essentialLinks: linksList,
       leftDrawerOpen,
       toggleLeftDrawer() {
         leftDrawerOpen.value = !leftDrawerOpen.value;
+      },
+      tips() {
+        $q.notify({
+          message:'再点就点坏啦！',
+          position:'center',
+          color: 'pink',
+          icon: 'warning',
+        });
+      },
+      toast() {
+        $q.notify({
+          message:'别急别急，还早呢...',
+          position:'top',
+          color: 'red',
+          icon: 'warning',
+        });
       },
     };
   },
