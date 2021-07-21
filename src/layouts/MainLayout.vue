@@ -36,6 +36,7 @@
           v-for="link in essentialLinks"
           :key="link.title"
           v-bind="link"
+          @click="judgmentRoute(link)"
         />
       </q-list>
     </q-drawer>
@@ -53,7 +54,7 @@ const linksList = [
     title: "个人主页",
     caption: "CalesvolChen",
     icon: "home",
-    // link: "爱你呀宝",
+    path: "/",
   },
   {
     title: "Github",
@@ -63,6 +64,8 @@ const linksList = [
   },
 ];
 import { defineComponent, ref } from "vue";
+// import route from "../router"
+import { useRouter, useRoute } from "vue-router";
 
 export default defineComponent({
   name: "MainLayout",
@@ -72,6 +75,7 @@ export default defineComponent({
   },
 
   setup() {
+    const $route = useRouter();
     const leftDrawerOpen = ref(false);
     const $q = useQuasar();
 
@@ -81,20 +85,30 @@ export default defineComponent({
       toggleLeftDrawer() {
         leftDrawerOpen.value = !leftDrawerOpen.value;
       },
+      currentRoute() {
+        console.log($route.currentRoute.value.fullPath);
+      },
+      judgmentRoute(item) {
+        if (item.path && item.path !== $route.currentRoute.value.fullPath) {
+          const delta = ($route.getRoutes().length - 1) /2 - 1
+          console.log(delta);
+          $route.go(- delta);
+        }
+      },
       tips() {
         $q.notify({
-          message:'再点就点坏啦！',
-          position:'center',
-          color: 'pink',
-          icon: 'warning',
+          message: "再点就点坏啦！",
+          position: "center",
+          color: "pink",
+          icon: "warning",
         });
       },
       toast() {
         $q.notify({
-          message:'别急别急，还早呢...',
-          position:'top',
-          color: 'red',
-          icon: 'warning',
+          message: "别急别急，还早呢...",
+          position: "top",
+          color: "red",
+          icon: "warning",
         });
       },
     };

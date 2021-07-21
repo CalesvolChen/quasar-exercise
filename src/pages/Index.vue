@@ -1,10 +1,5 @@
 <template>
   <q-page class="flex flex-center">
-    <!-- <img
-      alt="Quasar logo"
-      src="~assets/quasar-logo-vertical.svg"
-      style="width: 200px; height: 200px"
-    > -->
     <q-btn
       style="font-size: 50px"
       label="跳转轮播图"
@@ -25,19 +20,22 @@
 <script>
 import { defineComponent } from "vue";
 import { useQuasar } from "quasar";
+// import useRoute from "../router"
+import { useRouter, useRoute } from "vue-router";
 export default defineComponent({
   name: "PageIndex",
   setup() {
-    const $q = useQuasar();
-
+    const $route = useRouter();
+    const { notify } = useQuasar();
     return {
       toast() {
-        $q.notify({
-          message: "你的宝正在想你哦",
-          color: 'blue',
-          icon: "announcement",
-          avatar: '../image/avatar.jpg'
-        });
+        console.log($route);
+        // notify({
+        //   message: "哈哈哈",
+        //   color: "blue",
+        //   // icon: "announcement",
+        //   avatar: require('../image/avatar.jpg')
+        // });
       },
     };
   },
