@@ -6,16 +6,16 @@
   "author": "Calesvol <825913109@qq.com>",
   "private": true,
   "scripts": {
+    "dev": "quasar dev",
+    "build": "quasar build",
+    "build:pwa": "quasar build -m pwa",
     "lint": "eslint --ext .js,.vue ./",
     "test": "echo \"No test specified\" && exit 0"
   },
   "dependencies": {
     "@quasar/extras": "^1.0.0",
     "core-js": "^3.6.5",
-    "quasar": "^2.0.0",
-    "dev": "quasar dev",
-    "build": "quasar build",
-    "build:pwa": "quasar build -m pwa"
+    "quasar": "^2.0.0"
   },
   "devDependencies": {
     "@babel/eslint-parser": "^7.13.14",
