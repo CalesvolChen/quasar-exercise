@@ -91,7 +91,6 @@ export default defineComponent({
       judgmentRoute(item) {
         if (item.path && item.path !== $route.currentRoute.value.fullPath) {
           const delta = ($route.getRoutes().length - 1) /2 - 1
-          console.log(delta);
           $route.go(- delta);
         }
       },
