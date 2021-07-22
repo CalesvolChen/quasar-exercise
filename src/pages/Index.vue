@@ -14,9 +14,27 @@
       padding="10px 20px"
       @click="toast"
     /> -->
-    <q-parallax
-      :src="require('../statics/img/bgImg.jpg')"
+    <q-carousel
+      vertical
+      transition-prev="slide-down"
+      transition-next="slide-up"
+      swipeable
+      animated
+      arrows
+      v-model="slide"
+      infinite
     >
+      <q-carousel-slide
+        v-for="(item, index) in swiper"
+        :key="`swiper-${index}`"
+        :name="index + 1"
+        :img-src="item.img"
+      />
+      <!-- <q-carousel-slide :name="2" img-src="" />
+      <q-carousel-slide :name="3" img-src="" />
+      <q-carousel-slide :name="4" img-src="" /> -->
+    </q-carousel>
+    <q-parallax :src="require('../statics/img/bgImg.jpg')">
       <h1 class="text-white">Calesvol</h1>
     </q-parallax>
   </q-page>
@@ -27,6 +45,21 @@ import { defineComponent } from "vue";
 import { useQuasar } from "quasar";
 // import useRoute from "../router"
 import { useRouter, useRoute } from "vue-router";
+
+const swiper = [
+  {
+    img: "../statics/img/swiper1.jpg",
+  },
+  {
+    img: "../statics/img/swiper2.jpg",
+  },
+  {
+    img: "../statics/img/swiper3.jpg",
+  },
+  {
+    img: "../statics/img/swiper4.jpg",
+  },
+];
 export default defineComponent({
   name: "PageIndex",
   setup() {
