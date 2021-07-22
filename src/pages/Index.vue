@@ -1,6 +1,6 @@
 <template>
-  <q-page class="flex flex-center">
-    <q-btn
+  <q-page class="flex">
+    <!-- <q-btn
       style="font-size: 50px"
       label="跳转轮播图"
       color="primary"
@@ -13,7 +13,12 @@
       color="primary"
       padding="10px 20px"
       @click="toast"
-    />
+    /> -->
+    <q-parallax
+      :src="require('../statics/img/bgImg.jpg')"
+    >
+      <h1 class="text-white">Calesvol</h1>
+    </q-parallax>
   </q-page>
 </template>
 
