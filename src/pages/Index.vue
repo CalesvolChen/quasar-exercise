@@ -1,5 +1,5 @@
 <template>
-  <q-page class="flex">
+  <q-page class="flex flex-center">
     <!-- <q-btn
       style="font-size: 50px"
       label="跳转轮播图"
@@ -14,26 +14,16 @@
       padding="10px 20px"
       @click="toast"
     /> -->
-    <q-carousel
-      vertical
-      transition-prev="slide-down"
-      transition-next="slide-up"
-      swipeable
-      animated
-      arrows
-      v-model="slide"
-      infinite
-    >
-      <q-carousel-slide
-        v-for="(item, index) in swiper"
-        :key="`swiper-${index}`"
-        :name="index + 1"
-        :img-src="item.img"
-      />
-      <!-- <q-carousel-slide :name="2" img-src="" />
-      <q-carousel-slide :name="3" img-src="" />
-      <q-carousel-slide :name="4" img-src="" /> -->
-    </q-carousel>
+    <div class="q-pa-md w100">
+      <q-carousel animated v-model="slide" height="500px" vertical arrows navigation infinite >
+        <q-carousel-slide
+          v-for="(item, index) in swiper"
+          :key="`swiper-${index}`"
+          :name="index + 1"
+          :img-src="item.img"
+        />
+      </q-carousel>
+    </div>
     <q-parallax :src="require('../statics/img/bgImg.jpg')">
       <h1 class="text-white">Calesvol</h1>
     </q-parallax>
@@ -41,23 +31,22 @@
 </template>
 
 <script>
-import { defineComponent } from "vue";
+import { defineComponent, ref } from "vue";
 import { useQuasar } from "quasar";
-// import useRoute from "../router"
 import { useRouter, useRoute } from "vue-router";
 
 const swiper = [
   {
-    img: "../statics/img/swiper1.jpg",
+    img: require("../statics/img/swiper/swiper1.jpg"),
   },
   {
-    img: "../statics/img/swiper2.jpg",
+    img: require("../statics/img/swiper/swiper2.jpg"),
   },
   {
-    img: "../statics/img/swiper3.jpg",
+    img: require("../statics/img/swiper/swiper3.jpg"),
   },
   {
-    img: "../statics/img/swiper4.jpg",
+    img: require("../statics/img/swiper/swiper4.jpg"),
   },
 ];
 export default defineComponent({
@@ -65,7 +54,10 @@ export default defineComponent({
   setup() {
     const $route = useRouter();
     const { notify } = useQuasar();
+    const slide = ref(1);
     return {
+      swiper,
+      slide,
       toast() {
         console.log($route);
         // notify({
@@ -79,3 +71,9 @@ export default defineComponent({
   },
 });
 </script>
+
+<style scoped>
+.w100 {
+  width: 100%;
+}
+</style>
