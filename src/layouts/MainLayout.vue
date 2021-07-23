@@ -51,8 +51,8 @@ import EssentialLink from "components/EssentialLink.vue";
 import { useQuasar } from "quasar";
 const linksList = [
   {
-    title: "个人主页",
-    caption: "CalesvolChen",
+    title: "Home",
+    caption: "首页",
     icon: "home",
     path: "/",
   },
@@ -96,7 +96,7 @@ export default defineComponent({
       },
       tips() {
         $q.notify({
-          message: "再点就点坏啦！",
+          message: "点了又没用",
           position: "center",
           color: "pink",
           icon: "warning",

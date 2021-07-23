@@ -1,21 +1,16 @@
 <template>
   <q-page class="flex flex-center">
-    <!-- <q-btn
-      style="font-size: 50px"
-      label="跳转轮播图"
-      color="primary"
-      padding="10px 20px"
-      to="/hello"
-    />
-    <q-btn
-      style="font-size: 50px"
-      label="提示"
-      color="primary"
-      padding="10px 20px"
-      @click="toast"
-    /> -->
     <div class="q-pa-md w100 opacity">
-      <q-carousel animated v-model="slide" height="500px" vertical arrows navigation infinite>
+      <q-carousel
+        animated
+        v-model="slide"
+        height="500px"
+        vertical
+        arrows
+        navigation
+        infinite
+        autoplay
+      >
         <q-carousel-slide
           v-for="(item, index) in swiper"
           :key="`swiper-${index}`"
@@ -24,16 +19,106 @@
         />
       </q-carousel>
     </div>
+    <pre>
+      JavaScript 简介
+        让我们来看看 JavaScript 有什么特别之处，我们可以用它实现什么，以及哪些其他技术可以与其搭配产生奇妙的效果。
+
+      什么是 JavaScript？
+        JavaScript 最初被创建的目的是“使网页更生动”。
+
+        这种编程语言写出来的程序被称为 脚本。它们可以被直接写在网页的 HTML 中，在页面加载的时候自动执行。
+
+        脚本被以纯文本的形式提供和执行。它们不需要特殊的准备或编译即可运行。
+
+        这方面，JavaScript 和 Java 有很大的区别。
+    </pre>
     <q-parallax :src="require('../statics/img/bgImg.jpg')">
       <h1 class="text-white">Calesvol</h1>
     </q-parallax>
+    <pre>
+      JavaScript 简介
+        让我们来看看 JavaScript 有什么特别之处，我们可以用它实现什么，以及哪些其他技术可以与其搭配产生奇妙的效果。
+
+      什么是 JavaScript？
+        JavaScript 最初被创建的目的是“使网页更生动”。
+
+        这种编程语言写出来的程序被称为 脚本。它们可以被直接写在网页的 HTML 中，在页面加载的时候自动执行。
+
+        脚本被以纯文本的形式提供和执行。它们不需要特殊的准备或编译即可运行。
+
+        这方面，JavaScript 和 Java 有很大的区别。
+    </pre>
+    <q-parallax :src="require('../statics/img/swiper/swiper1.jpg')">
+      <h1 class="text-white">Calesvol</h1>
+    </q-parallax>
+    <pre>
+      JavaScript 简介
+        让我们来看看 JavaScript 有什么特别之处，我们可以用它实现什么，以及哪些其他技术可以与其搭配产生奇妙的效果。
+
+      什么是 JavaScript？
+        JavaScript 最初被创建的目的是“使网页更生动”。
+
+        这种编程语言写出来的程序被称为 脚本。它们可以被直接写在网页的 HTML 中，在页面加载的时候自动执行。
+
+        脚本被以纯文本的形式提供和执行。它们不需要特殊的准备或编译即可运行。
+
+        这方面，JavaScript 和 Java 有很大的区别。
+    </pre>
+    <q-parallax :src="require('../statics/img/swiper/swiper2.jpg')">
+      <h1 class="text-white">Calesvol</h1>
+    </q-parallax>
+    <pre>
+      JavaScript 简介
+        让我们来看看 JavaScript 有什么特别之处，我们可以用它实现什么，以及哪些其他技术可以与其搭配产生奇妙的效果。
+
+      什么是 JavaScript？
+        JavaScript 最初被创建的目的是“使网页更生动”。
+
+        这种编程语言写出来的程序被称为 脚本。它们可以被直接写在网页的 HTML 中，在页面加载的时候自动执行。
+
+        脚本被以纯文本的形式提供和执行。它们不需要特殊的准备或编译即可运行。
+
+        这方面，JavaScript 和 Java 有很大的区别。
+    </pre>
+    <q-parallax :src="require('../statics/img/swiper/swiper3.jpg')">
+      <h1 class="text-white">Calesvol</h1>
+    </q-parallax>
+    <pre>
+      JavaScript 简介
+        让我们来看看 JavaScript 有什么特别之处，我们可以用它实现什么，以及哪些其他技术可以与其搭配产生奇妙的效果。
+
+      什么是 JavaScript？
+        JavaScript 最初被创建的目的是“使网页更生动”。
+
+        这种编程语言写出来的程序被称为 脚本。它们可以被直接写在网页的 HTML 中，在页面加载的时候自动执行。
+
+        脚本被以纯文本的形式提供和执行。它们不需要特殊的准备或编译即可运行。
+
+        这方面，JavaScript 和 Java 有很大的区别。
+    </pre>
+    <q-parallax :src="require('../statics/img/swiper/swiper4.jpg')">
+      <h1 class="text-white">Calesvol</h1>
+    </q-parallax>
+    <pre>
+      JavaScript 简介
+        让我们来看看 JavaScript 有什么特别之处，我们可以用它实现什么，以及哪些其他技术可以与其搭配产生奇妙的效果。
+
+      什么是 JavaScript？
+        JavaScript 最初被创建的目的是“使网页更生动”。
+
+        这种编程语言写出来的程序被称为 脚本。它们可以被直接写在网页的 HTML 中，在页面加载的时候自动执行。
+
+        脚本被以纯文本的形式提供和执行。它们不需要特殊的准备或编译即可运行。
+
+        这方面，JavaScript 和 Java 有很大的区别。
+    </pre>
   </q-page>
 </template>
 
 <script>
 import { defineComponent, ref } from "vue";
 import { useQuasar } from "quasar";
-import { useRouter, useRoute } from "vue-router";
+import { useRouter } from "vue-router";
 
 const swiper = [
   {
@@ -47,7 +132,7 @@ const swiper = [
   },
   {
     img: require("../statics/img/swiper/swiper4.jpg"),
-  },
+  }
 ];
 export default defineComponent({
   name: "PageIndex",
@@ -77,6 +162,6 @@ export default defineComponent({
   width: 100%;
 }
 .opacity {
-  opacity:1
+  opacity: 1;
 }
 </style>
