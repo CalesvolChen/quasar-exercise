@@ -14,8 +14,8 @@
       padding="10px 20px"
       @click="toast"
     /> -->
-    <div class="q-pa-md w100">
-      <q-carousel animated v-model="slide" height="500px" vertical arrows navigation infinite >
+    <div class="q-pa-md w100 opacity">
+      <q-carousel animated v-model="slide" height="500px" vertical arrows navigation infinite>
         <q-carousel-slide
           v-for="(item, index) in swiper"
           :key="`swiper-${index}`"
@@ -75,5 +75,8 @@ export default defineComponent({
 <style scoped>
 .w100 {
   width: 100%;
+}
+.opacity {
+  opacity:1
 }
 </style>
