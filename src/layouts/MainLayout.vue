@@ -89,7 +89,16 @@ export default defineComponent({
         console.log($route.currentRoute.value.fullPath);
       },
       judgmentRoute(item) {
-        if (item.path && item.path !== $route.currentRoute.value.fullPath) {
+        const currentPath = $route.currentRoute.value.fullPath;
+        if (currentPath === "/") {
+          notify({
+            message: "你已经在首页啦",
+            position: "center",
+            color: "blue",
+            icon: "home",
+          });
+        }
+        if (item.path && item.path !== currentPath) {
           const delta = ($route.getRoutes().length - 1) / 2 - 1;
           notify({
             message: "正在回到首页，请稍后...",
@@ -101,18 +110,11 @@ export default defineComponent({
           setTimeout(() => {
             $route.go(-delta);
           }, 1500);
-          return;
         }
-        notify({
-          message: "你已经在首页啦",
-          position: "center",
-          color: "blue",
-          icon: "home",
-        });
       },
       tips() {
         notify({
-          message: "点了又没用",
+          message: "点了又没用...",
           position: "center",
           color: "pink",
           icon: "warning",

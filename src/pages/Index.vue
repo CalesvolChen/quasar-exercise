@@ -19,19 +19,25 @@
         />
       </q-carousel>
     </div>
-    <pre>
-      JavaScript 简介
-        让我们来看看 JavaScript 有什么特别之处，我们可以用它实现什么，以及哪些其他技术可以与其搭配产生奇妙的效果。
-
-      什么是 JavaScript？
-        JavaScript 最初被创建的目的是“使网页更生动”。
-
-        这种编程语言写出来的程序被称为 脚本。它们可以被直接写在网页的 HTML 中，在页面加载的时候自动执行。
-
-        脚本被以纯文本的形式提供和执行。它们不需要特殊的准备或编译即可运行。
-
-        这方面，JavaScript 和 Java 有很大的区别。
-    </pre>
+    <div class="q-pa-md row items-start q-gutter-md">
+      <q-card
+        class="my-card bg-secondary text-white"
+        v-for="(item, index) in cardList"
+        :key="`card-${index}`"
+        :style="{ maxWidth: index ? '250px' : '300px' }"
+      >
+        <q-card-section>
+          <div class="text-h6">{{ item.title }}</div>
+          <div class="text-subtitle2">by {{ item.author }}</div>
+        </q-card-section>
+        <q-card-section> {{ item.content }} </q-card-section>
+        <q-separator dark />
+        <q-card-actions align="around">
+          <q-btn flat @click="haveRead(index)">已阅</q-btn>
+          <q-btn flat @click="delNews(item)">删除</q-btn>
+        </q-card-actions>
+      </q-card>
+    </div>
     <q-parallax :src="require('../statics/img/bgImg.jpg')">
       <h1 class="text-white">Calesvol</h1>
     </q-parallax>
@@ -132,25 +138,72 @@ const swiper = [
   },
   {
     img: require("../statics/img/swiper/swiper4.jpg"),
-  }
+  },
 ];
+
 export default defineComponent({
   name: "PageIndex",
   setup() {
     const $route = useRouter();
     const { notify } = useQuasar();
     const slide = ref(1);
+    let cardList = ref([
+      {
+        title: "这是一个卡片",
+        author: "Calesvol",
+        content:
+          "让我们来看看 JavaScript 有什么特别之处，我们可以用它实现什么，以及哪些其他技术可以与其搭配产生奇妙的效果。让我们来看看 JavaScript 有什么特别之处，我们可以用它实现什么，以及哪些其他技术可以与其搭配产生奇妙的效果。让我们来看看 JavaScript 有什么特别之处，我们可以用它实现什么，以及哪些其他技术可以与其搭配产生奇妙的效果。让我们来看看 JavaScript 有什么特别之处，我们可以用它实现什么，以及哪些其他技术可以与其搭配产生奇妙的效果。",
+      },
+      {
+        title: "这是一个卡片",
+        author: "Calesvol",
+        content:
+          "让我们来看看 JavaScript 有什么特别之处，我们可以用它实现什么，以及哪些其他技术可以与其搭配产生奇妙的效果。",
+      },
+      {
+        title: "这是一个卡片",
+        author: "Calesvol",
+        content:
+          "让我们来看看 JavaScript 有什么特别之处，我们可以用它实现什么，以及哪些其他技术可以与其搭配产生奇妙的效果。",
+      },
+      {
+        title: "这是一个卡片",
+        author: "Calesvol",
+        content:
+          "让我们来看看 JavaScript 有什么特别之处，我们可以用它实现什么，以及哪些其他技术可以与其搭配产生奇妙的效果。",
+      },
+    ]);
     return {
       swiper,
+      cardList,
       slide,
-      toast() {
-        console.log($route);
-        // notify({
-        //   message: "哈哈哈",
-        //   color: "blue",
-        //   // icon: "announcement",
-        //   avatar: require('../image/avatar.jpg')
-        // });
+      haveRead(index) {
+        cardList.value.splice(index, 1);
+        notify({
+          message: "操作成功",
+          color: "green",
+          textColor: "write",
+          position: "center",
+          icon: "check",
+        });
+        setTimeout(() => {
+          cardList.value.push({
+            title: "这是一个卡片",
+            author: "Calesvol",
+            content:
+              "让我们来看看 JavaScript 有什么特别之处，我们可以用它实现什么，以及哪些其他技术可以与其搭配产生奇妙的效果。",
+          });
+        }, 1000);
+      },
+      //删除消息
+      delNews(item) {
+        notify({
+          message: "删不掉",
+          color: "yellow",
+          textColor: "black",
+          position: "center",
+          icon: "delete",
+        });
       },
     };
   },
@@ -163,5 +216,9 @@ export default defineComponent({
 }
 .opacity {
   opacity: 1;
+}
+.my-card {
+  width: 100%;
+  max-width: 250px;
 }
 </style>
