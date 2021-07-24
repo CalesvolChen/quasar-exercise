@@ -90,7 +90,7 @@ export default defineComponent({
       },
       judgmentRoute(item) {
         const currentPath = $route.currentRoute.value.fullPath;
-        if (currentPath === "/") {
+        if (currentPath === "/" && item.path) {
           notify({
             message: "你已经在首页啦",
             position: "center",
