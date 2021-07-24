@@ -77,7 +77,7 @@ export default defineComponent({
   setup() {
     const $route = useRouter();
     const leftDrawerOpen = ref(false);
-    const $q = useQuasar();
+    const { notify } = useQuasar();
 
     return {
       essentialLinks: linksList,
@@ -90,12 +90,28 @@ export default defineComponent({
       },
       judgmentRoute(item) {
         if (item.path && item.path !== $route.currentRoute.value.fullPath) {
-          const delta = ($route.getRoutes().length - 1) /2 - 1
-          $route.go(- delta);
+          const delta = ($route.getRoutes().length - 1) / 2 - 1;
+          notify({
+            message: "正在回到首页，请稍后...",
+            position: "top",
+            color: "pink",
+            spinner: true,
+            timeout: 1500,
+          });
+          setTimeout(() => {
+            $route.go(-delta);
+          }, 1500);
+          return;
         }
+        notify({
+          message: "你已经在首页啦",
+          position: "center",
+          color: "blue",
+          icon: "home",
+        });
       },
       tips() {
-        $q.notify({
+        notify({
           message: "点了又没用",
           position: "center",
           color: "pink",
@@ -103,7 +119,7 @@ export default defineComponent({
         });
       },
       toast() {
-        $q.notify({
+        notify({
           message: "别急别急，还早呢...",
           position: "top",
           color: "red",
