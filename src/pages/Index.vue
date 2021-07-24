@@ -177,6 +177,7 @@ export default defineComponent({
       swiper,
       cardList,
       slide,
+      // 已阅
       haveRead(index) {
         cardList.value.splice(index, 1);
         notify({
