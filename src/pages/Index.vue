@@ -19,7 +19,7 @@
         />
       </q-carousel>
     </div>
-    <div class="q-pa-md row items-start q-gutter-md">
+    <!-- <div class="q-pa-md row items-start q-gutter-md">
       <q-card
         class="my-card bg-secondary text-white"
         v-for="(item, index) in cardList"
@@ -37,7 +37,7 @@
           <q-btn flat @click="delNews(item)">删除</q-btn>
         </q-card-actions>
       </q-card>
-    </div>
+    </div> -->
     <q-parallax :src="require('../statics/img/bgImg.jpg')">
       <h1 class="text-white">Calesvol</h1>
     </q-parallax>
@@ -147,35 +147,35 @@ export default defineComponent({
     const $route = useRouter();
     const { notify } = useQuasar();
     const slide = ref(1);
-    let cardList = ref([
-      {
-        title: "这是一个卡片",
-        author: "Calesvol",
-        content:
-          "让我们来看看 JavaScript 有什么特别之处，我们可以用它实现什么，以及哪些其他技术可以与其搭配产生奇妙的效果。让我们来看看 JavaScript 有什么特别之处，我们可以用它实现什么，以及哪些其他技术可以与其搭配产生奇妙的效果。让我们来看看 JavaScript 有什么特别之处，我们可以用它实现什么，以及哪些其他技术可以与其搭配产生奇妙的效果。让我们来看看 JavaScript 有什么特别之处，我们可以用它实现什么，以及哪些其他技术可以与其搭配产生奇妙的效果。",
-      },
-      {
-        title: "这是一个卡片",
-        author: "Calesvol",
-        content:
-          "让我们来看看 JavaScript 有什么特别之处，我们可以用它实现什么，以及哪些其他技术可以与其搭配产生奇妙的效果。",
-      },
-      {
-        title: "这是一个卡片",
-        author: "Calesvol",
-        content:
-          "让我们来看看 JavaScript 有什么特别之处，我们可以用它实现什么，以及哪些其他技术可以与其搭配产生奇妙的效果。",
-      },
-      {
-        title: "这是一个卡片",
-        author: "Calesvol",
-        content:
-          "让我们来看看 JavaScript 有什么特别之处，我们可以用它实现什么，以及哪些其他技术可以与其搭配产生奇妙的效果。",
-      },
-    ]);
+    // let cardList = ref([
+    //   {
+    //     title: "这是一个卡片",
+    //     author: "Calesvol",
+    //     content:
+    //       "让我们来看看 JavaScript 有什么特别之处，我们可以用它实现什么，以及哪些其他技术可以与其搭配产生奇妙的效果。让我们来看看 JavaScript 有什么特别之处，我们可以用它实现什么，以及哪些其他技术可以与其搭配产生奇妙的效果。让我们来看看 JavaScript 有什么特别之处，我们可以用它实现什么，以及哪些其他技术可以与其搭配产生奇妙的效果。让我们来看看 JavaScript 有什么特别之处，我们可以用它实现什么，以及哪些其他技术可以与其搭配产生奇妙的效果。",
+    //   },
+    //   {
+    //     title: "这是一个卡片",
+    //     author: "Calesvol",
+    //     content:
+    //       "让我们来看看 JavaScript 有什么特别之处，我们可以用它实现什么，以及哪些其他技术可以与其搭配产生奇妙的效果。",
+    //   },
+    //   {
+    //     title: "这是一个卡片",
+    //     author: "Calesvol",
+    //     content:
+    //       "让我们来看看 JavaScript 有什么特别之处，我们可以用它实现什么，以及哪些其他技术可以与其搭配产生奇妙的效果。",
+    //   },
+    //   {
+    //     title: "这是一个卡片",
+    //     author: "Calesvol",
+    //     content:
+    //       "让我们来看看 JavaScript 有什么特别之处，我们可以用它实现什么，以及哪些其他技术可以与其搭配产生奇妙的效果。",
+    //   },
+    // ]);
     return {
       swiper,
-      cardList,
+      // cardList,
       slide,
       // 已阅
       haveRead(index) {
