@@ -21,7 +21,9 @@
     </div>
     <div class="q-pa-xl NotoSerifSC">
       <div class="text-h6">{{ title }}</div>
-      <div class="text-right text-h6 q-pt-md">{{ author&&`——${ author }`}}</div>
+      <div class="text-right text-h6 q-pt-md">
+        {{ author && `——${author}` }}
+      </div>
     </div>
 
     <tips-card></tips-card>
@@ -137,13 +139,13 @@ export default defineComponent({
     const { notify } = useQuasar();
     const slide = ref(1);
 
-    let title = ref(null)
-    let author = ref(null)
-    tipsApi('', 20, 30).then(res => {
+    let title = ref(null);
+    let author = ref(null);
+    tipsApi("", 20, 30).then((res) => {
       console.log(res);
-      title.value = res.data.hitokoto
-      author.value = res.data.from
-    })
+      title.value = res.data.hitokoto;
+      author.value = res.data.from;
+    });
     return {
       swiper,
       slide,
