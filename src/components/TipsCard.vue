@@ -1,7 +1,7 @@
 <template>
   <q-parallax :src="require('../statics/img/bgImg.jpg')">
     <div class="q-pa-md" @click="replaceTips">
-      <h2 class="text-white">{{ content }}</h2>
+      <h2 class="text-white NotoSerifSC">{{ content }}</h2>
     </div>
   </q-parallax>
 </template>

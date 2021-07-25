@@ -1,1 +1,10 @@
 /* app global css */
+@font-face {
+  font-family: NotoSerifSC;
+  src: url(./fonts/NotoSerifSC/NotoSerifSC-Medium.otf);
+}
+
+
+.NotoSerifSC {
+  font-family: 'NotoSerifSC';
+}

@@ -19,8 +19,8 @@
         />
       </q-carousel>
     </div>
-    <div class="q-pa-xl fontNoto">
-      <div class="text-h5">{{ title }}</div>
+    <div class="q-pa-xl NotoSerifSC">
+      <div class="text-h6">{{ title }}</div>
       <div class="text-right text-h6 q-pt-md">{{ author&&`——${ author }`}}</div>
     </div>
 
@@ -186,8 +186,5 @@ export default defineComponent({
 <style scoped>
 .w100 {
   width: 100%;
-}
-.fontNoto {
-  font-family: Noto Serif SC;
 }
 </style>
