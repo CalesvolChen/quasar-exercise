@@ -19,25 +19,7 @@
         />
       </q-carousel>
     </div>
-    <!-- <div class="q-pa-md row items-start q-gutter-md">
-      <q-card
-        class="my-card bg-secondary text-white"
-        v-for="(item, index) in cardList"
-        :key="`card-${index}`"
-        :style="{ maxWidth: index ? '250px' : '300px' }"
-      >
-        <q-card-section>
-          <div class="text-h6">{{ item.title }}</div>
-          <div class="text-subtitle2">by {{ item.author }}</div>
-        </q-card-section>
-        <q-card-section> {{ item.content }} </q-card-section>
-        <q-separator dark />
-        <q-card-actions align="around">
-          <q-btn flat @click="haveRead(index)">已阅</q-btn>
-          <q-btn flat @click="delNews(item)">删除</q-btn>
-        </q-card-actions>
-      </q-card>
-    </div> -->
+    <span>{{ test }}</span>
     <q-parallax :src="require('../statics/img/bgImg.jpg')">
       <h1 class="text-white">Calesvol</h1>
     </q-parallax>
@@ -147,6 +129,18 @@ export default defineComponent({
     const $route = useRouter();
     const { notify } = useQuasar();
     const slide = ref(1);
+    const test = ref('1230')
+    const url = 'https://v1.hitokoto.cn'
+    const params = {
+      c:'d',
+    }
+    // axios.post(url,params)
+    // .then(res => {
+    //   console.log(res)
+    // })
+    // .catch(err => {
+    //   console.error(err);
+    // })
     // let cardList = ref([
     //   {
     //     title: "这是一个卡片",
@@ -177,6 +171,7 @@ export default defineComponent({
       swiper,
       // cardList,
       slide,
+      test,
       // 已阅
       haveRead(index) {
         cardList.value.splice(index, 1);
