@@ -15,8 +15,8 @@ import axios from "axios";
 //   //       so you can easily perform requests against your app's API
 // });
 // export { axios, api };
-const tipsApi = (c = "i", max = "20") => {
-  const url = `https://v1.hitokoto.cn?c=${c}&max_length=${max}`;
+const tipsApi = (c = "i",min = 0, max = "20") => {
+  const url = `https://v1.hitokoto.cn?c=${c}&min_length=${min}&max_length=${max}`;
   return axios
     .get(url)
     .then((res) => {

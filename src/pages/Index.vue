@@ -1,6 +1,6 @@
 <template>
   <q-page class="flex flex-center">
-    <div class="q-pa-md w100">
+    <div class="w100">
       <q-carousel
         animated
         v-model="slide"
@@ -19,6 +19,11 @@
         />
       </q-carousel>
     </div>
+    <div class="q-pa-xl fontNoto">
+      <div class="text-h5">{{ title }}</div>
+      <div class="text-right text-h6 q-pt-md">{{ author&&`——${ author }`}}</div>
+    </div>
+
     <tips-card></tips-card>
 
     <pre>
@@ -106,7 +111,7 @@ import { defineComponent, ref } from "vue";
 import { useQuasar } from "quasar";
 import { useRouter } from "vue-router";
 import TipsCard from "components/TipsCard.vue";
-
+import { tipsApi } from "src/boot/axios";
 const swiper = [
   {
     img: require("../statics/img/swiper/swiper1.jpg"),
@@ -132,11 +137,18 @@ export default defineComponent({
     const { notify } = useQuasar();
     const slide = ref(1);
 
+    let title = ref(null)
+    let author = ref(null)
+    tipsApi('', 20, 30).then(res => {
+      console.log(res);
+      title.value = res.data.hitokoto
+      author.value = res.data.from
+    })
     return {
       swiper,
-      // cardList,
       slide,
-      // test,
+      title,
+      author,
       // 已阅
       haveRead(index) {
         cardList.value.splice(index, 1);
@@ -174,5 +186,8 @@ export default defineComponent({
 <style scoped>
 .w100 {
   width: 100%;
+}
+.fontNoto {
+  font-family: Noto Serif SC;
 }
 </style>
