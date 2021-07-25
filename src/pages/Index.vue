@@ -1,6 +1,6 @@
 <template>
   <q-page class="flex flex-center">
-    <div class="q-pa-md w100 opacity">
+    <div class="q-pa-md w100">
       <q-carousel
         animated
         v-model="slide"
@@ -19,10 +19,8 @@
         />
       </q-carousel>
     </div>
-    <span>{{ test }}</span>
-    <q-parallax :src="require('../statics/img/bgImg.jpg')">
-      <h1 class="text-white">Calesvol</h1>
-    </q-parallax>
+    <tips-card></tips-card>
+
     <pre>
       JavaScript 简介
         让我们来看看 JavaScript 有什么特别之处，我们可以用它实现什么，以及哪些其他技术可以与其搭配产生奇妙的效果。
@@ -107,6 +105,7 @@
 import { defineComponent, ref } from "vue";
 import { useQuasar } from "quasar";
 import { useRouter } from "vue-router";
+import TipsCard from "components/TipsCard.vue";
 
 const swiper = [
   {
@@ -125,53 +124,19 @@ const swiper = [
 
 export default defineComponent({
   name: "PageIndex",
+  components: {
+    TipsCard,
+  },
   setup() {
     const $route = useRouter();
     const { notify } = useQuasar();
     const slide = ref(1);
-    const test = ref('1230')
-    const url = 'https://v1.hitokoto.cn'
-    const params = {
-      c:'d',
-    }
-    // axios.post(url,params)
-    // .then(res => {
-    //   console.log(res)
-    // })
-    // .catch(err => {
-    //   console.error(err);
-    // })
-    // let cardList = ref([
-    //   {
-    //     title: "这是一个卡片",
-    //     author: "Calesvol",
-    //     content:
-    //       "让我们来看看 JavaScript 有什么特别之处，我们可以用它实现什么，以及哪些其他技术可以与其搭配产生奇妙的效果。让我们来看看 JavaScript 有什么特别之处，我们可以用它实现什么，以及哪些其他技术可以与其搭配产生奇妙的效果。让我们来看看 JavaScript 有什么特别之处，我们可以用它实现什么，以及哪些其他技术可以与其搭配产生奇妙的效果。让我们来看看 JavaScript 有什么特别之处，我们可以用它实现什么，以及哪些其他技术可以与其搭配产生奇妙的效果。",
-    //   },
-    //   {
-    //     title: "这是一个卡片",
-    //     author: "Calesvol",
-    //     content:
-    //       "让我们来看看 JavaScript 有什么特别之处，我们可以用它实现什么，以及哪些其他技术可以与其搭配产生奇妙的效果。",
-    //   },
-    //   {
-    //     title: "这是一个卡片",
-    //     author: "Calesvol",
-    //     content:
-    //       "让我们来看看 JavaScript 有什么特别之处，我们可以用它实现什么，以及哪些其他技术可以与其搭配产生奇妙的效果。",
-    //   },
-    //   {
-    //     title: "这是一个卡片",
-    //     author: "Calesvol",
-    //     content:
-    //       "让我们来看看 JavaScript 有什么特别之处，我们可以用它实现什么，以及哪些其他技术可以与其搭配产生奇妙的效果。",
-    //   },
-    // ]);
+
     return {
       swiper,
       // cardList,
       slide,
-      test,
+      // test,
       // 已阅
       haveRead(index) {
         cardList.value.splice(index, 1);
@@ -209,12 +174,5 @@ export default defineComponent({
 <style scoped>
 .w100 {
   width: 100%;
-}
-.opacity {
-  opacity: 1;
-}
-.my-card {
-  width: 100%;
-  max-width: 250px;
 }
 </style>
