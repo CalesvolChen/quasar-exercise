@@ -16,11 +16,7 @@ import { useRouter } from "vue-router";
 export default {
   setup() {
     const $route = useRouter();
-    const slide = ref(1);
-    const fullscreen = ref(false);
     return {
-      slide,
-      fullscreen,
       toast() {
         console.log($route);
         // console.log($route.currentRoute.value);
