@@ -24,7 +24,7 @@
       :key="`tips-${index}`"
       :img="item.img"
     ></tips-card>
-    <div class="q-pa-xl context">
+    <div class="q-pa-xl">
       <pre class="text-center">
 来，封我为荡妇吧，不然对不起这春风浩荡里的遇见
 我的野鸽子，你衔来桃花衔来杏花衔来炮弹
@@ -124,8 +124,5 @@ export default defineComponent({
 <style scoped>
 .w100 {
   width: 100%;
-}
-.context {
-  /* width: 66%; */
 }
 </style>
