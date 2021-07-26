@@ -8,10 +8,10 @@ const routes = [
     ]
   },
   {
-    path: '/hello',
+    path: '/work',
     component: () => import('layouts/MainLayout.vue'),
     children: [
-      { path: '', component: () => import('pages/helloWorld.vue') }
+      { path: '', component: () => import('src/pages/showWork.vue') }
     ]
   },
   // Always leave this as last one,
