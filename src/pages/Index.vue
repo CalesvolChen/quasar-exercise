@@ -23,6 +23,7 @@
       v-for="(item, index) in tipsList"
       :key="`tips-${index}`"
       :img="item.img"
+      :current="index"
     ></tips-card>
     <div class="q-pa-xl">
       <pre class="text-center">
@@ -82,7 +83,6 @@ export default defineComponent({
     const $route = useRouter();
     const { notify } = useQuasar();
     const slide = ref(1);
-    console.log(tipsApi());
     return {
       swiper,
       tipsList: tipsList.concat(swiper),

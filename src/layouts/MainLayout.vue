@@ -49,6 +49,8 @@
 <script>
 import EssentialLink from "components/EssentialLink.vue";
 import { useQuasar } from "quasar";
+import { defineComponent, ref } from "vue";
+import { useRouter, useRoute } from "vue-router";
 const linksList = [
   {
     title: "Home",
@@ -69,9 +71,6 @@ const linksList = [
     path: "/work",
   },
 ];
-import { defineComponent, ref } from "vue";
-// import route from "../router"
-import { useRouter, useRoute } from "vue-router";
 
 export default defineComponent({
   name: "MainLayout",
@@ -91,9 +90,6 @@ export default defineComponent({
       toggleLeftDrawer() {
         leftDrawerOpen.value = !leftDrawerOpen.value;
       },
-      currentRoute() {
-        console.log($route.currentRoute.value.fullPath);
-      },
       judgmentRoute(item) {
         const currentPath = $route.currentRoute.value.fullPath;
         if (currentPath === "/" && item.path === "/") {
@@ -107,16 +103,18 @@ export default defineComponent({
         }
         if (item.path === "/" && item.path !== currentPath) {
           const delta = ($route.getRoutes().length - 1) / 2 - 1;
-          notify({
-            message: "正在回到首页，请稍后...",
-            position: "top",
-            color: "pink",
-            spinner: true,
-            timeout: 1000,
-          });
-          setTimeout(() => {
-            $route.go(-delta);
-          }, 1500);
+          // notify({
+          //   message: "正在回到首页，请稍后...",
+          //   position: "top",
+          //   color: "pink",
+          //   spinner: true,
+          //   timeout: 1000,
+          // });
+          // setTimeout(() => {
+          //   $route.go(-delta);
+          // }, 1500);
+          $route.go(-delta);
+
           return;
         }
         if (item.path !== currentPath) {
