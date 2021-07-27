@@ -33,10 +33,10 @@
           <q-item-section side>online</q-item-section>
         </q-item>
         <EssentialLink
-          v-for="link in essentialLinks"
+          v-for="(link, index) in essentialLinks"
           :key="link.title"
           v-bind="link"
-          @click="judgmentRoute(link)"
+          @click="judgmentRoute(link, index)"
         />
       </q-list>
     </q-drawer>
@@ -44,6 +44,28 @@
       <router-view />
     </q-page-container>
   </q-layout>
+
+  <q-dialog v-model="prompt" persistent>
+    <q-card style="min-width: 350px">
+      <q-card-section>
+        <div class="text-h6">请输入秘钥</div>
+      </q-card-section>
+
+      <q-card-section class="q-pt-none">
+        <q-input
+          dense
+          v-model="secret"
+          autofocus
+          @keyup.enter="confirmSecret"
+        />
+      </q-card-section>
+
+      <q-card-actions align="right" class="text-primary">
+        <q-btn flat label="取消" @click="confirmSecret" />
+        <q-btn flat label="确认" @click="confirmSecret" />
+      </q-card-actions>
+    </q-card>
+  </q-dialog>
 </template>
 
 <script>
@@ -81,16 +103,20 @@ export default defineComponent({
 
   setup() {
     const $route = useRouter();
-    const leftDrawerOpen = ref(false);
     const { notify } = useQuasar();
 
+    const leftDrawerOpen = ref(false);
+    const prompt = ref(false);
+    const secret = ref(null);
     return {
       essentialLinks: linksList,
       leftDrawerOpen,
+      prompt,
+      secret,
       toggleLeftDrawer() {
         leftDrawerOpen.value = !leftDrawerOpen.value;
       },
-      judgmentRoute(item) {
+      judgmentRoute(item, index) {
         const currentPath = $route.currentRoute.value.fullPath;
         if (currentPath === "/" && item.path === "/") {
           notify({
@@ -114,12 +140,30 @@ export default defineComponent({
           //   $route.go(-delta);
           // }, 1500);
           $route.go(-delta);
-
           return;
         }
         if (item.path !== currentPath) {
+          if (index > 1) {
+            prompt.value = true;
+            return;
+          }
           $route.push(item.path);
         }
+      },
+      //确认秘钥
+      confirmSecret() {
+        if (secret.value !== "calesvol") {
+          notify({
+            message: "秘钥错误！",
+            position: "top",
+            color: "red",
+            icon: "warning",
+          });
+          return;
+        }
+        prompt.value = false;
+        $route.push('/work');
+
       },
       tips() {
         notify({
