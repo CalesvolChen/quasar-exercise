@@ -82,40 +82,40 @@ export default defineComponent({
     const $route = useRouter();
     const { notify } = useQuasar();
     const slide = ref(1);
-
+    console.log(tipsApi());
     return {
       swiper,
       tipsList: tipsList.concat(swiper),
       slide,
       // 已阅
-      haveRead(index) {
-        cardList.value.splice(index, 1);
-        notify({
-          message: "操作成功",
-          color: "green",
-          textColor: "write",
-          position: "center",
-          icon: "check",
-        });
-        setTimeout(() => {
-          cardList.value.push({
-            title: "这是一个卡片",
-            author: "Calesvol",
-            content:
-              "让我们来看看 JavaScript 有什么特别之处，我们可以用它实现什么，以及哪些其他技术可以与其搭配产生奇妙的效果。",
-          });
-        }, 1000);
-      },
-      //删除消息
-      delNews(item) {
-        notify({
-          message: "删不掉",
-          color: "yellow",
-          textColor: "black",
-          position: "center",
-          icon: "delete",
-        });
-      },
+      // haveRead(index) {
+      //   cardList.value.splice(index, 1);
+      //   notify({
+      //     message: "操作成功",
+      //     color: "green",
+      //     textColor: "write",
+      //     position: "center",
+      //     icon: "check",
+      //   });
+      //   setTimeout(() => {
+      //     cardList.value.push({
+      //       title: "这是一个卡片",
+      //       author: "Calesvol",
+      //       content:
+      //         "让我们来看看 JavaScript 有什么特别之处，我们可以用它实现什么，以及哪些其他技术可以与其搭配产生奇妙的效果。",
+      //     });
+      //   }, 1000);
+      // },
+      // //删除消息
+      // delNews(item) {
+      //   notify({
+      //     message: "删不掉",
+      //     color: "yellow",
+      //     textColor: "black",
+      //     position: "center",
+      //     icon: "delete",
+      //   });
+      // },
     };
   },
 });

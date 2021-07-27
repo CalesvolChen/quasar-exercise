@@ -1,13 +1,13 @@
 <template>
   <div class="q-pa-xl NotoSerifSC">
-    <div class="text-h6">{{ title }}</div>
+    <div class="text-h6">{{ title || '网络错误' }}</div>
     <div class="text-right text-h6 q-pt-md">
-      {{ titleAuthor && `——${titleAuthor}` }}
+      {{ titleAuthor && `——${ titleAuthor || '网络错误' }` }}
     </div>
   </div>
   <q-parallax :src="img">
-    <div class="q-pa-md" @click="replaceTips">
-      <h2 class="text-white NotoSerifSC">{{ content }}</h2>
+    <div class="q-pa-md">
+      <h2 class="text-white NotoSerifSC">{{ content || '网络错误' }}</h2>
     </div>
   </q-parallax>
 </template>
@@ -24,7 +24,7 @@ export default defineComponent({
   setup() {
     let title = ref(null);
     let titleAuthor = ref(null);
-    tipsApi("", 20, 30).then((res) => {
+    tipsApi("i", 20, 30).then((res) => {
       if (res.status !== 200) {
         title.value = "网络错误";
         titleAuthor.value = "网络错误";
