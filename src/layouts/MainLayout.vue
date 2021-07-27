@@ -61,7 +61,7 @@
       </q-card-section>
 
       <q-card-actions align="right" class="text-primary">
-        <q-btn flat label="取消" @click="confirmSecret" />
+        <q-btn flat label="取消" @click="cancelSecret" />
         <q-btn flat label="确认" @click="confirmSecret" />
       </q-card-actions>
     </q-card>
@@ -150,6 +150,11 @@ export default defineComponent({
           $route.push(item.path);
         }
       },
+      //取消输入
+      cancelSecret() {
+        prompt.value = false;
+        secret.value = null;
+      },
       //确认秘钥
       confirmSecret() {
         if (secret.value !== "calesvol") {
@@ -162,8 +167,8 @@ export default defineComponent({
           return;
         }
         prompt.value = false;
-        $route.push('/work');
-
+        $route.push("/work");
+        secret.value = null;
       },
       tips() {
         notify({
