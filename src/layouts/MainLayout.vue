@@ -62,6 +62,12 @@ const linksList = [
     icon: "code",
     link: "https://github.com/CalesvolChen",
   },
+  {
+    title: "Gallery",
+    caption: "作品展示",
+    icon: "collections",
+    path: "/work",
+  },
 ];
 import { defineComponent, ref } from "vue";
 // import route from "../router"
@@ -90,26 +96,31 @@ export default defineComponent({
       },
       judgmentRoute(item) {
         const currentPath = $route.currentRoute.value.fullPath;
-        if (currentPath === "/" && item.path) {
+        if (currentPath === "/" && item.path === "/") {
           notify({
             message: "你已经在首页啦",
             position: "center",
             color: "blue",
             icon: "home",
           });
+          return;
         }
-        if (item.path && item.path !== currentPath) {
+        if (item.path === "/" && item.path !== currentPath) {
           const delta = ($route.getRoutes().length - 1) / 2 - 1;
           notify({
             message: "正在回到首页，请稍后...",
             position: "top",
             color: "pink",
             spinner: true,
-            timeout: 1500,
+            timeout: 1000,
           });
           setTimeout(() => {
             $route.go(-delta);
           }, 1500);
+          return;
+        }
+        if (item.path !== currentPath) {
+          $route.push(item.path);
         }
       },
       tips() {
