@@ -10,22 +10,17 @@
   </div>
 </template>
 
-<script>
+<script setup>
 import { ref } from "vue";
 import { useRouter } from "vue-router";
-import { poemsApi } from "boot/axios"
-export default {
-  setup() {
-    const $route = useRouter();
-    return {
-      toast() {
-        poemsApi().then(res => {
-          console.log(res);
-        })
-        // console.log($route.currentRoute.value);
-      },
-    };
-  },
+import { poemsApi } from "boot/axios";
+
+const $route = useRouter();
+const toast = () => {
+  poemsApi().then((res) => {
+    console.log(res);
+  });
+  // console.log($route.currentRoute.value);
 };
 </script>
 

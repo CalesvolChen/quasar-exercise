@@ -12,57 +12,49 @@
   </q-parallax>
 </template>
 
-<script>
-import { defineComponent, ref } from "vue";
+<script setup>
+import { defineComponent, defineProps, ref } from "vue";
 import { tipsApi, poemsApi } from "boot/axios";
 
-export default defineComponent({
-  name: "TipsCard",
-  props: {
-    img: String,
-    current: {
-      type: Number,
-      default: -1,
-    },
+const props = defineProps({
+  img: String,
+  current: {
+    type: Number,
+    default: -1,
   },
-  setup(props) {
-    let title = ref(null);
-    let titleAuthor = ref(null);
-    let content = ref(null);
-    if (props.current === 0) {
-      tipsApi("i", 20, 30).then((res) => {
-        if (res.status !== 200) {
-          title.value = "网络错误";
-          titleAuthor.value = "网络错误";
-          return;
-        }
-        title.value = res.data.hitokoto;
-        titleAuthor.value = res.data.from;
-      });
-    } else {
-      poemsApi().then((res) => {
-        if (res.status !== 200) {
-          title.value = "网络错误";
-          titleAuthor.value = "网络错误";
-          return;
-        }
-        title.value = res.data.data.sentence;
-        titleAuthor.value = res.data.data.author;
-      });
+});
+
+let title = ref(null);
+let titleAuthor = ref(null);
+let content = ref(null);
+
+if (props.current === 0) {
+  tipsApi("i", 20, 30).then((res) => {
+    if (res.status !== 200) {
+      title.value = "网络错误";
+      titleAuthor.value = "网络错误";
+      return;
     }
-    poemsApi().then((res) => {
-      if (res.status !== 200) {
-        content.value = "网络错误";
-        return;
-      }
-      content.value = res.data.data.sentence;
-    });
-    return {
-      title,
-      titleAuthor,
-      content,
-    };
-  },
+    title.value = res.data.hitokoto;
+    titleAuthor.value = res.data.from;
+  });
+} else {
+  poemsApi().then((res) => {
+    if (res.status !== 200) {
+      title.value = "网络错误";
+      titleAuthor.value = "网络错误";
+      return;
+    }
+    title.value = res.data.data.sentence;
+    titleAuthor.value = res.data.data.author;
+  });
+}
+poemsApi().then((res) => {
+  if (res.status !== 200) {
+    content.value = "网络错误";
+    return;
+  }
+  content.value = res.data.data.sentence;
 });
 </script>
 <style>
