@@ -74,12 +74,10 @@ import { useQuasar } from "quasar";
 import { ref } from "vue";
 import { useRouter } from "vue-router";
 
-import { linksList } from "../statics/data"
+import { linksList as essentialLinks } from "../statics/data"
 
 const $route = useRouter();
 const { notify } = useQuasar();
-
-const essentialLinks = linksList;
 
 const leftDrawerOpen = ref(false);
 const prompt = ref(false);
