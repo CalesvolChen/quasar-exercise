@@ -68,11 +68,11 @@
   </q-dialog>
 </template>
 
-<script>
+<script setup>
 import EssentialLink from "components/EssentialLink.vue";
 import { useQuasar } from "quasar";
-import { defineComponent, ref } from "vue";
-import { useRouter, useRoute } from "vue-router";
+import { ref } from "vue";
+import { useRouter } from "vue-router";
 const linksList = [
   {
     title: "Home",
@@ -94,99 +94,93 @@ const linksList = [
   },
 ];
 
-export default defineComponent({
-  name: "MainLayout",
+const $route = useRouter();
+const { notify } = useQuasar();
 
-  components: {
-    EssentialLink,
-  },
+const essentialLinks = linksList;
 
-  setup() {
-    const $route = useRouter();
-    const { notify } = useQuasar();
+const leftDrawerOpen = ref(false);
+const prompt = ref(false);
+const secret = ref(null);
 
-    const leftDrawerOpen = ref(false);
-    const prompt = ref(false);
-    const secret = ref(null);
-    return {
-      essentialLinks: linksList,
-      leftDrawerOpen,
-      prompt,
-      secret,
-      toggleLeftDrawer() {
-        leftDrawerOpen.value = !leftDrawerOpen.value;
-      },
-      judgmentRoute(item, index) {
-        const currentPath = $route.currentRoute.value.fullPath;
-        if (currentPath === "/" && item.path === "/") {
-          notify({
-            message: "你已经在首页啦",
-            position: "center",
-            color: "blue",
-            icon: "home",
-          });
-          return;
-        }
-        if (item.path === "/" && item.path !== currentPath) {
-          const delta = ($route.getRoutes().length - 1) / 2 - 1;
-          // notify({
-          //   message: "正在回到首页，请稍后...",
-          //   position: "top",
-          //   color: "pink",
-          //   spinner: true,
-          //   timeout: 1000,
-          // });
-          // setTimeout(() => {
-          //   $route.go(-delta);
-          // }, 1500);
-          $route.go(-delta);
-          return;
-        }
-        if (item.path !== currentPath) {
-          if (index > 1) {
-            prompt.value = true;
-            return;
-          }
-          $route.push(item.path);
-        }
-      },
-      //取消输入
-      cancelSecret() {
-        prompt.value = false;
-        secret.value = null;
-      },
-      //确认秘钥
-      confirmSecret() {
-        if (secret.value !== "calesvol") {
-          notify({
-            message: "秘钥错误！",
-            position: "top",
-            color: "red",
-            icon: "warning",
-          });
-          return;
-        }
-        prompt.value = false;
-        $route.push("/work");
-        secret.value = null;
-      },
-      tips() {
-        notify({
-          message: "点了又没用...",
-          position: "center",
-          color: "pink",
-          icon: "warning",
-        });
-      },
-      toast() {
-        notify({
-          message: "别急别急，还早呢...",
-          position: "top",
-          color: "red",
-          icon: "warning",
-        });
-      },
-    };
-  },
-});
+// 侧边栏
+const toggleLeftDrawer = () => {
+  leftDrawerOpen.value = !leftDrawerOpen.value;
+};
+
+// 判断路由跳转
+const judgmentRoute = (item, index) => {
+  const currentPath = $route.currentRoute.value.fullPath;
+  if (currentPath === "/" && item.path === "/") {
+    notify({
+      message: "你已经在首页啦",
+      position: "center",
+      color: "blue",
+      icon: "home",
+    });
+    return;
+  }
+  if (item.path === "/" && item.path !== currentPath) {
+    const delta = ($route.getRoutes().length - 1) / 2 - 1;
+    // notify({
+    //   message: "正在回到首页，请稍后...",
+    //   position: "top",
+    //   color: "pink",
+    //   spinner: true,
+    //   timeout: 1000,
+    // });
+    // setTimeout(() => {
+    //   $route.go(-delta);
+    // }, 1500);
+    $route.go(-delta);
+    return;
+  }
+  if (item.path !== currentPath) {
+    if (index > 1) {
+      prompt.value = true;
+      return;
+    }
+    $route.push(item.path);
+  }
+};
+
+//取消输入
+const cancelSecret = () => {
+  prompt.value = false;
+  secret.value = null;
+};
+
+//确认秘钥
+const confirmSecret = () => {
+  if (secret.value !== "calesvol") {
+    notify({
+      message: "秘钥错误！",
+      position: "top",
+      color: "red",
+      icon: "warning",
+    });
+    return;
+  }
+  prompt.value = false;
+  $route.push("/work");
+  secret.value = null;
+};
+
+const tips = () => {
+  notify({
+    message: "点了又没用...",
+    position: "center",
+    color: "pink",
+    icon: "warning",
+  });
+};
+
+const toast = () => {
+  notify({
+    message: "别急别急，还早呢...",
+    position: "top",
+    color: "red",
+    icon: "warning",
+  });
+};
 </script>
