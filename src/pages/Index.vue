@@ -55,22 +55,11 @@
 import { defineComponent, ref } from "vue";
 import { useQuasar } from "quasar";
 import { useRouter } from "vue-router";
+
 import TipsCard from "components/TipsCard.vue";
-import { tipsApi } from "src/boot/axios";
-const swiper = [
-  {
-    img: require("../statics/img/swiper/swiper1.jpg"),
-  },
-  {
-    img: require("../statics/img/swiper/swiper2.jpg"),
-  },
-  {
-    img: require("../statics/img/swiper/swiper3.jpg"),
-  },
-  {
-    img: require("../statics/img/swiper/swiper4.jpg"),
-  },
-];
+
+import { swiper } from "../statics/data"
+
 let tipsList = [
   {
     img: require("../statics/img/bgImg.jpg"),

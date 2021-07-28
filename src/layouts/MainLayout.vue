@@ -73,26 +73,8 @@ import EssentialLink from "components/EssentialLink.vue";
 import { useQuasar } from "quasar";
 import { ref } from "vue";
 import { useRouter } from "vue-router";
-const linksList = [
-  {
-    title: "Home",
-    caption: "首页",
-    icon: "home",
-    path: "/",
-  },
-  {
-    title: "Github",
-    caption: "github.com/CalesvolChen",
-    icon: "code",
-    link: "https://github.com/CalesvolChen",
-  },
-  {
-    title: "Gallery",
-    caption: "作品展示",
-    icon: "collections",
-    path: "/work",
-  },
-];
+
+import { linksList } from "../statics/data"
 
 const $route = useRouter();
 const { notify } = useQuasar();
