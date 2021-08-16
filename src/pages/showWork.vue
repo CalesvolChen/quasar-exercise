@@ -13,13 +13,10 @@
 <script setup>
 import { ref } from "vue";
 import { useRouter } from "vue-router";
-import { poemsApi } from "boot/axios";
+import { testApi } from "boot/axios";
 
 const $route = useRouter();
 const toast = () => {
-  poemsApi().then((res) => {
-    console.log(res);
-  });
   // console.log($route.currentRoute.value);
 };
 </script>
