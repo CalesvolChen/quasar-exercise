@@ -60,7 +60,7 @@ import { swiper } from "../statics/data";
 
 const tipsList = [
   {
-    img: require("../statics/img/bgImg.jpg"),
+    img: 'img/bgImg.jpg',
   },
 ].concat(swiper);
 

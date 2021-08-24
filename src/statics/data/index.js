@@ -1,15 +1,15 @@
 export const swiper = [
   {
-    img: require("../img/swiper/swiper1.jpg"),
+    img: 'img/swiper/swiper1.jpg',
   },
   {
-    img: require("../img/swiper/swiper2.jpg"),
+    img: 'img/swiper/swiper2.jpg',
   },
   {
-    img: require("../img/swiper/swiper3.jpg"),
+    img: 'img/swiper/swiper3.jpg',
   },
   {
-    img: require("../img/swiper/swiper4.jpg"),
+    img: 'img/swiper/swiper4.jpg',
   },
 ];
 
