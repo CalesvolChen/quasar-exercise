@@ -60,7 +60,7 @@ import { swiper } from "../data";
 
 const tipsList = [
   {
-    img: 'img/bgImg.jpg',
+    img: "img/bgImg.jpg",
   },
 ].concat(swiper);
 

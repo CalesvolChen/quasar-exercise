@@ -74,7 +74,7 @@ import { useQuasar } from "quasar";
 import { ref } from "vue";
 import { useRouter } from "vue-router";
 
-import { linksList as essentialLinks } from "../data"
+import { linksList as essentialLinks } from "../data";
 
 const $route = useRouter();
 const { notify } = useQuasar();
