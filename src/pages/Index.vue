@@ -56,7 +56,7 @@ import { useRouter } from "vue-router";
 
 import TipsCard from "components/TipsCard.vue";
 
-import { swiper } from "../statics/data";
+import { swiper } from "../data";
 
 const tipsList = [
   {
