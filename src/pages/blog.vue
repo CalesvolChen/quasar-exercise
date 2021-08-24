@@ -5,8 +5,6 @@
 </template>
 
 <script setup>
-import useClient from 'boot/notion.js'
-const { client } = useClient()
 
 </script>
 
