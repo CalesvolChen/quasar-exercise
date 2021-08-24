@@ -6,8 +6,8 @@
 
 <script setup>
 import useClient from 'boot/notion.js'
-const { client, databaseId } = useClient()
-console.log(client)
+const { client } = useClient()
+
 </script>
 
 <style></style>
