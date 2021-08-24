@@ -23,7 +23,7 @@
         <q-item clickable v-ripple @click="tips">
           <q-item-section side>
             <q-avatar size="48px">
-              <img src="../image/avatar.jpg" />
+              <img src="img/avatar.jpg" />
             </q-avatar>
           </q-item-section>
           <q-item-section>
@@ -100,27 +100,18 @@ const judgmentRoute = (item, index) => {
     });
     return;
   }
-  if (item.path === "/" && item.path !== currentPath) {
-    const delta = ($route.getRoutes().length - 1) / 2 - 1;
-    // notify({
-    //   message: "正在回到首页，请稍后...",
-    //   position: "top",
-    //   color: "pink",
-    //   spinner: true,
-    //   timeout: 1000,
-    // });
-    // setTimeout(() => {
-    //   $route.go(-delta);
-    // }, 1500);
-    $route.go(-delta);
-    return;
-  }
+  // if (item.path === "/" && item.path !== currentPath) {
+  //   const delta = ($route.getRoutes().length - 1) / 2 - 1;
+  //   console.log(delta)
+  //   $route.go(-10000);
+  //   return;
+  // }
   if (item.path !== currentPath) {
-    if (index > 1) {
+    if (index === 2) {
       prompt.value = true;
       return;
     }
-    $route.push(item.path);
+    $route.replace(item.path);
   }
 };
 

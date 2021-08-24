@@ -32,4 +32,10 @@ export const linksList = [
     icon: "collections",
     path: "/work",
   },
+  {
+    title: "Blog",
+    caption: "博客",
+    icon: "auto_stories",
+    path: "/blog",
+  },
 ];
