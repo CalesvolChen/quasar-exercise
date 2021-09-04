@@ -10,5 +10,5 @@ const database_id = "9dc1f61e39f644df8613a11cc5450475"; // 数据库id
 // "async" is optional;
 // more info on params: https://v2.quasar.dev/quasar-cli/boot-files
 export default boot(() => {
-  console.log(123)
+  console.log('notion API start')
 });
